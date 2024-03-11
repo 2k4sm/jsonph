@@ -3,6 +3,7 @@ package com.sm2k4.jsonph.Controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,9 +46,16 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO updatePost,@PathVariable int id) {
-        PostDTO updatedPost = this.postService.updatePost(updatePost,id);
+    public ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO updatePost, @PathVariable int id) {
+        PostDTO updatedPost = this.postService.updatePost(updatePost, id);
 
         return ResponseEntity.ok(updatedPost);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<PostDTO> deletePost(@PathVariable int id) {
+        PostDTO deletedPost = this.postService.deletePost(id);
+
+        return ResponseEntity.ok(deletedPost);
     }
 }

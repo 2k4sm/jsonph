@@ -9,4 +9,5 @@ public interface PostService {
     public PostDTO getPostById(int id);
     public PostDTO createPost(PostDTO newPost);
     public PostDTO updatePost(PostDTO updatePost,int id);
+    public PostDTO deletePost(int id);
 }

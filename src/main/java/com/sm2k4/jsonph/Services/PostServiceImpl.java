@@ -53,4 +53,13 @@ public class PostServiceImpl implements PostService {
 
         return updatedPostEntity.getBody();
     }
+
+    public PostDTO deletePost(int id) {
+        String URL = "https://jsonplaceholder.typicode.com/posts/";
+
+        ResponseEntity<PostDTO> deletePostEntity = this.restTemplate.exchange(URL + id, HttpMethod.DELETE, null,
+                PostDTO.class);
+
+        return deletePostEntity.getBody();
+    }
 }
