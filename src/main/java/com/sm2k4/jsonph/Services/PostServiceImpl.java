@@ -35,4 +35,10 @@ public class PostServiceImpl implements PostService {
 
         return this.restTemplate.getForObject(URL + id, PostDTO.class);
     }
+
+    public PostDTO createPost(PostDTO newPost) {
+        String URL = "https://jsonplaceholder.typicode.com/posts";
+
+        return this.restTemplate.postForObject(URL, newPost, PostDTO.class);
+    }
 }
