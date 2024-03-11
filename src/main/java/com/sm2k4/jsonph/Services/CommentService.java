@@ -10,4 +10,6 @@ public interface CommentService {
 
     public CommentDTO getCommentById(int id);
 
+    public List<CommentDTO> getCommentsByPost(int postId);
+
 }

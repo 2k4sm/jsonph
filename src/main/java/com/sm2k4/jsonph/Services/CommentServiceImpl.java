@@ -34,4 +34,17 @@ public class CommentServiceImpl implements CommentService {
 
         return this.restTemplate.getForObject(URL, CommentDTO.class);
     }
+
+    public List<CommentDTO> getCommentsByPost(int postId) {
+        String URL = String.format("https://jsonplaceholder.typicode.com/posts/%d/comments", postId);
+
+        CommentDTO[] allCommentsOfPost = this.restTemplate.getForObject(URL, CommentDTO[].class);
+        List<CommentDTO> allCommentsOfPostList = new ArrayList<>();
+
+        for (CommentDTO comment : allCommentsOfPost) {
+            allCommentsOfPostList.add(comment);
+        }
+
+        return allCommentsOfPostList;
+    }
 }
