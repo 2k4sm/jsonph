@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,5 +26,11 @@ public class PostController {
         List<PostDTO> allPosts = this.postService.getAllPosts();
 
         return ResponseEntity.ok(allPosts);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDTO> getPostById(@PathVariable int id) {
+        PostDTO postById = this.postService.getPostById(id);
+        return ResponseEntity.ok(postById);
     }
 }

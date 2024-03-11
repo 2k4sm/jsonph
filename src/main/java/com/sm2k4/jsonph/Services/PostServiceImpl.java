@@ -29,4 +29,10 @@ public class PostServiceImpl implements PostService {
 
         return allPostList;
     }
+
+    public PostDTO getPostById(int id) {
+        String URL = "https://jsonplaceholder.typicode.com/posts/";
+
+        return this.restTemplate.getForObject(URL + id, PostDTO.class);
+    }
 }
