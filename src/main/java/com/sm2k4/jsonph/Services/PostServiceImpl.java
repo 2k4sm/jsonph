@@ -3,6 +3,9 @@ package com.sm2k4.jsonph.Services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -40,5 +43,14 @@ public class PostServiceImpl implements PostService {
         String URL = "https://jsonplaceholder.typicode.com/posts";
 
         return this.restTemplate.postForObject(URL, newPost, PostDTO.class);
+    }
+
+    public PostDTO updatePost(PostDTO updatePost, int id) {
+        String URL = "https://jsonplaceholder.typicode.com/posts/";
+
+        ResponseEntity<PostDTO> updatedPostEntity = this.restTemplate.exchange(URL + id, HttpMethod.PUT,
+                new HttpEntity<>(updatePost), PostDTO.class);
+
+        return updatedPostEntity.getBody();
     }
 }
